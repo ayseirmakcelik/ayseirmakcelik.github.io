@@ -1,18 +1,12 @@
-const defaultState = {
-  x: mousePosition.x - 16,
-  y: mousePosition.y - 16
-}
-
-const hoverState = {
-  x: mousePosition.x - 32,
-  y: mousePosition.y - 32
-}
-
-export default function cursorReducer(state = defaultState, action) {
+export default function cursorStyleReducer(state = "default", action) {
   switch (action.type) {
-    case "DEFAULT":
-      return defaultState
-    case "HOVER":
-      return
+    case "CURSOR_DEFAULT":
+      return "default"
+    case "CURSOR_HOVER":
+      return "hover"
+    case "CURSOR_CLICK":
+      return "click"
+    default:
+      return state
   }
 }
