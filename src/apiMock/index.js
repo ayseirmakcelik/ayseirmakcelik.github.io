@@ -1,50 +1,32 @@
 import {ReactComponent as BuildingIcon} from "../static/vectors/building-icon.svg";
+import buildingPicture from '../static/images/building.jpg'
+
 
 export const works = [
   {
+    id: 1,
     title: 'Equatorian Penguins',
     year: 2021,
-    icon: BuildingIcon
+    icon: BuildingIcon,
+    thumbnailUrl: buildingPicture,
+    hoverColour: "#000000"
   },
   {
-    title: 'Selam eheheheh',
-    year: 2197,
-    icon: BuildingIcon
-  },
-  {
-    title: 'Irmik proje',
-    year: 2021,
-    icon: BuildingIcon
-  },
-  {
-    title: 'Gosimam',
-    year: 2021,
-    icon: BuildingIcon
-  },
-  {
-    title: 'Eheheheh',
-    year: 2021,
-    icon: BuildingIcon
-  },
-  {
-    title: 'Proje x',
-    year: 2021,
-    icon: BuildingIcon
-  },
-  {
+    id: 2,
     title: 'Equatorian Penguins',
     year: 2021,
-    icon: BuildingIcon
+    icon: BuildingIcon,
+    thumbnailUrl: buildingPicture,
+    hoverColour: "#000000"
   },
   {
+    id: 3,
     title: 'Equatorian Penguins',
     year: 2021,
-    icon: BuildingIcon
+    icon: BuildingIcon,
+    thumbnailUrl: buildingPicture,
+    hoverColour: "#000000"
   },
-  {
-    title: 'Equatorian Penguins',
-    year: 2021,
-    icon: BuildingIcon
-  },
+
 
 ]

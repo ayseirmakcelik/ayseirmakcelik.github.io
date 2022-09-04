@@ -15,3 +15,9 @@ export function clickCursorStyle() {
     type: "CURSOR_CLICK"
   }
 }
+
+export function hoverWorkCardCursorStyle() {
+  return {
+    type: "CURSOR_HOVER_WORK_CARD"
+  }
+}

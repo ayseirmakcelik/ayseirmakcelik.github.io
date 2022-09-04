@@ -6,6 +6,8 @@ export default function cursorStyleReducer(state = "default", action) {
       return "hover"
     case "CURSOR_CLICK":
       return "click"
+    case "CURSOR_HOVER_WORK_CARD":
+      return "hoverWorkCard"
     default:
       return state
   }

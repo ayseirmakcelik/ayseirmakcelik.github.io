@@ -1,39 +1,58 @@
-import {Box} from "@mui/material";
 import {useDispatch} from "react-redux";
-import {defaultCursorStyle, hoverCursorStyle} from "../redux/actions/cursorStyle";
+import {defaultCursorStyle, hoverWorkCardCursorStyle} from "../redux/actions/cursorStyle";
 import {motion} from "framer-motion";
 import {useState} from "react";
-
+import {useNavigate} from "react-router-dom";
 
 export default function WorkCard({work}) {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [hovered, setHovered] = useState(false);
+  const [style, setStyle] = useState('default')
 
   const styleVariants = {
-    default: {
-      padding: "20px",
-      position: "relative",
-      border: "1px solid white",
-      flex: "1",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexDirection: "column"
-    },
-
+    default: {},
+    hover: {
+      opacity: 1,
+      staggerChildren: 0.9
+    }
   }
 
   return (
-    <motion.Box variants={styleVariants}
+    <>
+      <motion.div
+        onMouseEnter={(event) => {
+          setStyle('hover')
+          // dispatch(hoverWorkCardCursorStyle())
+        }}
+        onMouseLeave={() => {
+          setStyle('default')
+          // dispatch(defaultCursorStyle())
+        }}
+        onClick={() => {
+          navigate('/works/' + work.id)
+          // dispatch(defaultCursorStyle())
+        }}
+        className={"workCardBody"}
+      >
 
-                onMouseEnter={() => dispatch(hoverCursorStyle())}
-                onMouseLeave={() => dispatch(defaultCursorStyle())}
-                className={"workCardBody"}>
-      <work.icon className={'workCardIcon'}/>
-      <p className={"worksCardTitle"}>{work.title}</p>
-      <p className={"workCardSubTitle"}>{work.year}</p>
-    </motion.Box>
+        <work.icon className={'workCardIcon'} style={{
+          fill: style === "hover" ? work.hoverColour : "white"
+        }}/>
+        <motion.p layoutId={"workTitle_" + work.id} className={"worksCardTitle"} style={{
+          color: style === "hover" ? work.hoverColour : "white"
+        }}>{work.title}</motion.p>
+        <p className={"workCardSubTitle"} style={{
+          color: style === "hover" ? work.hoverColour : "white"
+        }}>{work.year}</p>
+
+        <motion.img variants={styleVariants}
+                    animate={style}
+                    className={"workCardBackgroundImage"}
+                    src={work.thumbnailUrl}
+        ></motion.img>
+      </motion.div>
+    </>
   )
 }
